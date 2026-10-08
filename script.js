@@ -1,6 +1,5 @@
 /**
  * الموقع التعريفي لجمعية حنطة الخيرية التنموية
- * الحل: حفظ الطلبات في مستودع GitHub خاص + حماية من السبام
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,13 +24,6 @@ function initFormValidation() {
 document.getElementById('membershipForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
-    // 🛡️ الحماية 1: التحقق من حقل المصيدة (Honeypot)
-    const honeypot = document.getElementById('website').value;
-    if (honeypot !== "") {
-        console.warn("Bot detected!");
-        return;
-    }
-
     const nationalId = document.getElementById('nationalId').value;
     if (nationalId.length !== 11) {
         showNotification('عذراً، الرقم الوطني يجب أن يكون 11 رقماً.', 'error');
@@ -61,13 +53,12 @@ document.getElementById('membershipForm').addEventListener('submit', function(e)
     // ==========================================
     // ⚙️ إعدادات GitHub
     // ==========================================
-    // تم تقسيم الرمز لتجنب تحذير GitHub Secret Scanning
     const TOKEN_PART_1 = "github_pat_11CPZRM2Q0xkINJKAi22eo_MY5IAG6l7K";
     const TOKEN_PART_2 = "nG4yrmSLI1QXDd5TFyiSulKfMfAfQgE2hD5BD2DIH7aFgvmxa";
     const GITHUB_TOKEN = TOKEN_PART_1 + TOKEN_PART_2;
 
-    const OWNER = "tarekbrooo5-eng";              // اسم حسابك
-    const REPO = "heinta-members-data";           // المستودع الخاص الجديد
+    const OWNER = "tarekbrooo5-eng";
+    const REPO = "heinta-members-data";
 
     const issueTitle = `طلب انتساب: ${formData.fullName}`;
     const issueBody = `
