@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>جمعية حنطة الخيرية التنموية - طرطوس</title>
+    <!-- خط Tajawal -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- الترويسة الرئيسية -->
+    <!-- الترويسة -->
     <header class="main-header">
         <div class="logo-container">
             <img src="images/logo.png" alt="شعار جمعية حنطة" class="logo-img" onerror="this.style.display='none'">
@@ -17,204 +19,139 @@
                 <p>نحو تمكين تنموي ومجتمعي مستدام في الساحل السوري</p>
             </div>
         </div>
-        <!-- شريط التنقل وزر النظام الداخلي -->
         <nav class="main-nav">
-            <button class="active-nav" onclick="switchTab('home', this)">الرئيسية</button>
-            <button onclick="switchTab('register', this)">استمارة الانتساب</button>
-            <button onclick="switchTab('admin', this)">بوابة المؤسسين والإدارة</button>
-            <button onclick="openInternalRules()" style="background: var(--accent); color: #fff; font-weight: bold; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer;">📜 النظام الداخلي</button>
+            <a href="#home">الرئيسية</a>
+            <a href="#about">من نحن</a>
+            <a href="#objectives">أهدافنا</a>
+            <a href="#membership" class="btn-nav">انضم إلينا</a>
         </nav>
     </header>
 
-    <main class="container">
-        
-        <!-- قسم الرئيسية -->
-        <section id="home" class="section active">
-            <div class="card">
-                <h2>أهلاً بكم في الموقع الرسمي لجمعية حنطة الخيرية التنموية</h2>
-                <p>نعمل في جمعية حنطة على تعزيز العمل المجتمعي، دعم الأسر المستحقة، وتفعيل التنمية المستدامة في محافظة طرطوس وكافة أراضي الجمهورية العربية السورية.</p>
+    <!-- القسم الرئيسي (Hero) -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h2>معاً نبني مجتمعاً أفضل</h2>
+            <p>جمعية حنطة الخيرية التنموية تعمل على دعم الأسر المستحقة، تمكين الشباب، وتعزيز التنمية المستدامة في طرطوس وكافة أراضي الجمهورية العربية السورية.</p>
+            <a href="#membership" class="btn-primary">سجل عضويتك الآن</a>
+        </div>
+    </section>
+
+    <!-- من نحن -->
+    <section id="about" class="container section-padding">
+        <div class="section-title">
+            <h2>من نحن</h2>
+        </div>
+        <div class="card about-card">
+            <p>جمعية حنطة الخيرية التنموية هي جمعية أهلية مرخصة بموجب القرار رقم 48 الصادر عن وزارة الشؤون الاجتماعية والعمل في الجمهورية العربية السورية. تأسست الجمعية لتكون نموذجاً رائداً في العمل الخيري والتنموي، حيث تجمع بين تقديم المساعدات العينية والمالية للفقراء والمحتاجين، وبين إطلاق مبادرات تنموية مستدامة تهدف إلى تمكين الشباب وتعزيز الوعي الاجتماعي.</p>
+            <p>نؤمن بأن التنمية الحقيقية تبدأ من الإنسان، لذلك نركز على خلق فرص عمل، وتأهيل الكفاءات، وحماية البيئة، وتحسين جودة الحياة للأسر والمجتمعات المحلية.</p>
+        </div>
+    </section>
+
+    <!-- أهدافنا -->
+    <section id="objectives" class="container section-padding bg-light">
+        <div class="section-title">
+            <h2>أهدافنا</h2>
+        </div>
+        <div class="grid-cards">
+            <div class="card objective-card">
+                <div class="icon">🤝</div>
+                <h3>العمل الخيري</h3>
+                <p>تقديم المساعدات العينية والمالية للفقراء والمحتاجين، وتعزيز الوعي الاجتماعي حول قضايا الفقر.</p>
             </div>
-        </section>
-
-        <!-- قسم استمارة الانتساب -->
-        <section id="register" class="section">
-            <div class="card">
-                <h2>استمارة طلب انتساب لعضوية الجمعية</h2>
-                <form id="officialForm" onsubmit="submitOfficialForm(event)">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label>الاسم الثلاثي والكنية:</label>
-                            <input type="text" id="fullName" required>
-                        </div>
-                        <div class="form-group">
-                            <label>اسم الأب:</label>
-                            <input type="text" id="fatherName" required>
-                        </div>
-                        <div class="form-group">
-                            <label>اسم الأم وشهرتها:</label>
-                            <input type="text" id="motherName" required>
-                        </div>
-                        <div class="form-group">
-                            <label>محل وتاريخ الولادة:</label>
-                            <input type="text" id="birthPlaceDate" required>
-                        </div>
-                        <div class="form-group">
-                            <label>الرقم الوطني (11 رقماً):</label>
-                            <input type="text" id="nationalId" maxlength="11" required>
-                        </div>
-                        <div class="form-group">
-                            <label>التحصيل العلمي:</label>
-                            <input type="text" id="education" required>
-                        </div>
-                        <div class="form-group">
-                            <label>المهنة الحالية:</label>
-                            <input type="text" id="job" required>
-                        </div>
-                        <div class="form-group">
-                            <label>العنوان بالتفصيل:</label>
-                            <input type="text" id="address" required>
-                        </div>
-                        <div class="form-group">
-                            <label>رقم الواتساب (للتواصل):</label>
-                            <input type="text" id="whatsapp" maxlength="10" placeholder="09xxxxxxxx" required>
-                        </div>
-                        <div class="form-group">
-                            <label>البريد الإلكتروني (اختياري):</label>
-                            <input type="email" id="email">
-                        </div>
-                        <div class="form-group">
-                            <label>الوضع العائلي / الاجتماعي:</label>
-                            <input type="text" id="socialStatus" required>
-                        </div>
-                        <div class="form-group">
-                            <label>عدد أفراد الأسرة:</label>
-                            <input type="number" id="familyMembers" min="1" required>
-                        </div>
-                    </div>
-                    <div class="form-group" style="margin-top: 15px;">
-                        <label>الخبرات أو الرغبة في التطوع والمشاركة:</label>
-                        <textarea id="experience" rows="3" placeholder="ذكر الخبرات أو اللجان التي تود المشاركة بها"></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn" style="margin-top: 15px;">إرسال طلب الانتساب</button>
-                </form>
+            <div class="card objective-card">
+                <div class="icon">🎓</div>
+                <h3>التعليم والتمكين</h3>
+                <p>تمكين الشباب من مواكبة التطور التقني من خلال دورات تخصصية وورشات عمل لتنمية المهارات.</p>
             </div>
-        </section>
-
-        <!-- قسم بوابة المؤسسين والإدارة -->
-        <section id="admin" class="section">
-            <!-- صندوق تسجيل الدخول -->
-            <div class="card" id="loginBox">
-                <h3>🔒 بوابة تسجيل الدخول (مجلس الإدارة والمؤسسين)</h3>
-                <p>يرجى اختيار صفة الدخول وإدخال كلمة المرور الخاصة بالمؤسسين:</p>
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <label>اختر صفة الدخول:</label>
-                    <select id="adminRole" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc;">
-                        <option value="president">رئيس الجمعية (مؤسس)</option>
-                        <option value="vice">نائب الرئيس (مؤسس)</option>
-                        <option value="treasurer">أمين الصندوق</option>
-                    </select>
-                </div>
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <label>كلمة المرور:</label>
-                    <input type="password" id="adminPassword" placeholder="أدخل كلمة المرور" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc;">
-                </div>
-                <button class="submit-btn" onclick="loginAdminSystem()">دخول النظام</button>
+            <div class="card objective-card">
+                <div class="icon">🏗️</div>
+                <h3>التنمية والإسكان</h3>
+                <p>المساهمة في مشروعات تنموية للمناطق النائية اقتصادياً، وتأهيل قدرات الشباب لخلق فرص عمل.</p>
             </div>
-
-            <!-- لوحة التحكم الإدارية والمالية -->
-            <div id="adminDashboard" style="display: none;">
-                <div class="card" style="background: #eef2f3; border-right: 5px solid var(--primary);">
-                    <h2 id="adminTitle" style="margin: 0; color: var(--primary);">لوحة التحكم</h2>
-                </div>
-
-                <!-- تبويبات النظام المالي والإداري -->
-                <div class="admin-tabs" style="display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap;">
-                    <button class="sub-tab-btn active" onclick="switchAdminSubTab('expenses', this)" style="background: var(--primary); color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">💸 النفقات</button>
-                    <button class="sub-tab-btn" onclick="switchAdminSubTab('aidOut', this)" style="background: #555; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">📦 إخراج المساعدات</button>
-                    <button class="sub-tab-btn" onclick="switchAdminSubTab('initiatives', this)" style="background: #555; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">💡 مصاريف المبادرات</button>
-                    <button class="sub-tab-btn" onclick="switchAdminSubTab('members', this)" style="background: #555; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">👥 طلبات الانتساب</button>
-                </div>
-
-                <!-- محتوى التبويبات الديناميكي -->
-                <div id="subTabContent"></div>
-
-                <!-- قسم إدارة القرى والحالات (خاص بالمؤسسين) -->
-                <div id="villagesSectionWrapper" style="margin-top: 30px; display: none;">
-                    <div class="card">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
-                            <h3 style="color: var(--primary); margin: 0;">🏡 إدارة القرى والحالات المستحقة</h3>
-                            <div>
-                                <button onclick="promptAddVillage()" style="background-color: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: bold;">➕ إضافة قرية جديدة</button>
-                            </div>
-                        </div>
-                        <div id="villagesContainer"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- نافذة منبثقة (Modal) لعرض النظام الداخلي الكامل المعتمد -->
-    <div id="internalRulesModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center;">
-        <div style="background: #fff; width: 90%; max-width: 850px; max-height: 85vh; border-radius: 8px; padding: 25px; display: flex; flex-direction: column; position: relative;">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">
-                <h2 style="margin: 0; color: var(--primary);">📜 النظام الداخلي لجمعية حنطة الخيرية التنموية</h2>
-                <button onclick="closeInternalRules()" style="background: #d32f2f; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">✕ إغلاق</button>
-            </div>
-            <div style="overflow-y: auto; flex-grow: 1; line-height: 1.8; color: #333; padding-left: 10px; text-align: justify;">
-                
-                <h3>الفصل الأول: اسم الجمعية ومقرها تصنيفا وأهدافها</h3>
-                <p><b>مادة 1:</b><br>
-                1- تؤسس باسم: جمعية حنطة الخيرية التنموية[cite: 5].<br>
-                2- اللوغو الخاص المعتمد[cite: 5].<br>
-                3- في مدينة: طرطوس[cite: 5].<br>
-                4- يتناول نشاط الجمعية كافة أراضي الجمهورية العربية السورية[cite: 5].<br>
-                5- العنوان الإلكتروني: heintah9@gmail.com[cite: 5].</p>
-
-                <p><b>مادة 2: تصنيفات الجمعية كما يلي[cite: 5]:</b><br>
-                1- الأعمال الخيرية[cite: 5].<br>
-                2- التعليم والتمكين[cite: 5].<br>
-                3- التنمية والإسكان[cite: 5].<br>
-                4- الخدمات الاجتماعية[cite: 5].</p>
-
-                <p><b>مادة 3: الأهداف والنشاط الرئيسي للجمعية[cite: 5]:</b><br>
-                1- تقديم المساعدات العينية والمالية للفقراء والمحتاجين[cite: 5].<br>
-                2- تعزيز الوعي الاجتماعي حول قضايا الفقر والمساعدات الانسانية وتكريس قيم الانسانية[cite: 5].<br>
-                3- تمكين الشباب من مواكبة التطور التقني والتكنولوجي من خلال القيام بدورات تخصصية في ذلك[cite: 5].<br>
-                4- تعزيز وتطوير مشاريع التنمية المستدامة من خلال خلق مشاريع انمائية والقيام بورشات عمل لتنمية المهارات والغاية من ذلك خلق فرص عمل للشباب[cite: 5].<br>
-                5- المساهمة في مشروعات محدودة للجهات الفقيرة في المناطق النائية اقتصاديا وتأهيل وتنمية قدرات الشباب[cite: 5].<br>
-                6- العمل على تعزيز التنمية العمرانية المستدامة من خلال حماية المساحات الخضراء وتشجيع استخدام الطاقة البديلة بما يحقق بيئة صحية وآمنة ويساهم في تحسين جودة الحياة للأسر والمجتمعات المحلية[cite: 5].</p>
-
-                <h3>الفصل الثاني: العضوية</h3>
-                <p><b>مادة 4:</b> تتألف الجمعية من أعضاء عاملين وأعضاء مؤازرين وأعضاء شرف[cite: 5]:<br>
-                1- العضو العامل: هو العضو الذي يقبل كتابة النظام الداخلي للجمعية ويلتزم بتسديد رسوم الانتساب والاشتراك الشهري ويحق له حضور اجتماعات الهيئة العامة[cite: 5].<br>
-                2- العضو المؤازر: هو العضو الذي يرغب بتقديم الدعم المادي او المعنوي او كليهما معا وليس له حق حضور اجتماعات الهيئة العامة[cite: 5].<br>
-                3- عضو الشرف: هو العضو الذي ترى الجمعية منحه هذه الصفة للخدمات الجليلة التي قدمها لها[cite: 5].</p>
-
-                <p><b>مادة 5: شروط وحقوق العضوية[cite: 5]:</b><br>
-                <b>أ- يشترط في عضو الجمعية[cite: 5]:</b> ألا يكون محكوماً بجناية أو بجنحة "شائنة"[cite: 5]، أن يكون حسن السلوك والسيرة[cite: 5]، أن يكون مقيم داخل أراضي الجمهورية العربية السورية[cite: 5]، أن يتجاوز الثامنة عشر من العمر[cite: 5]، أن يكون قد قبل نظام الجمعية[cite: 5]، وأن يقدم طلباً للانتساب إلى الجمعية برسم الانتساب مرفقاً[cite: 5].<br>
-                <b>ب- حقوق أعضاء الجمعية[cite: 5]:</b> المشاركة في وضع السياسة العامة للجمعية[cite: 5]، التصويت على قرارات الجمعية[cite: 5]، المشاركة في انتخاب أعضاء مجلس الإدارة أو الترشح لعضوية المجلس[cite: 5]، الانسحاب من الجمعية[cite: 5]، الاطلاع على التقارير المالية والإدارية للجمعية[cite: 5]، وتقديم المقترحات[cite: 5].</p>
-
-                <p><b>مادة 6:</b> تزول صفة العضوية في حالات: الانسحاب، فقد شرط من شروط العضوية، الفصل، الوفاة، أو التأخر عن تسديد رسم الاشتراك مدة ستة أشهر متتالية بعد إنذار[cite: 5].<br>
-                <b>مادة 7:</b> يفصل العضو إذا أتى عملاً من شأنه أن يلحق ضرراً مادياً أو أدبياً جسيماً بالجمعية، أو إذا استغل انضمامه للجمعية لغرض شخصي[cite: 5].<br>
-                <b>مادة 8 و9 و10:</b> تتعلق بتبليغ القرار خلال خمسة عشر يوماً، جواز إعادة العضوية لمن دفع الرسوم في السنة التالية، وعدم أحقية استرداد رسوم الانتساب أو التبرعات عند زوال العضوية[cite: 5].</p>
-
-                <h3>الفصل الثالث: الهيئة العامة</h3>
-                <p><b>مادة 11 إلى 23:</b> تتألف الهيئة العامة من الأعضاء العاملين الذين مضى على عضويتهم سنة على الأقل[cite: 5]. تجتمع مرة كل سنة خلال الثلاثة أشهر التالية لانتهاء السنة المالية[cite: 5]. تختص بالتصديق على الحساب الختامي، إقرار الميزانية، انتخاب مجلس الإدارة، وتعيين مراقب حسابات[cite: 5]. وتتخذ القرارات بالأكثرية النسبية أو بأغلبية ثلثي الأعضاء في حالات تعديل الغرض أو حل الجمعية[cite: 5].</p>
-
-                <h3>الفصل الرابع: مجلس الإدارة</h3>
-                <p><b>مادة 24 إلى 38:</b> يدير الجمعية مجلس إدارة مؤلف من أعضاء تنتخبهم الهيئة العامة لمدة سنتين[cite: 5]. يشترط ألا يكون محكوماً بجناية، وأن يكون عضواً منذ سنتين أو مؤسساً[cite: 5]. لا يجوز لعضو مجلس الإدارة العمل للجمعية بأجر[cite: 5]. يمثل المجلس الجمعية، ويجتمع مرة واحدة في كل شهر على الأقل[cite: 5]. ينتخب المجلس من بين أعضائه رئيساً، نائباً للرئيس، أميناً للسر، وأميناً للصندوق[cite: 5]. رئيس الجمعية هو آمر الصرف ومثلها أمام القضاء والجهات الرسمية[cite: 5].</p>
-
-                <h3>الفصل الخامس: مالية الجمعية</h3>
-                <p><b>مادة 39 إلى 46:</b> تتألف الإيرادات من رسوم الانتساب (250 ل.س) والاشتراكات (600 ل.س سنوية)، التبرعات، الهبات، والإعانات[cite: 5]. تبدأ السنة المالية في أول كانون الثاني وتنتهي في آخر كانون الأول[cite: 5]. تودع أموال الجمعية في المصرف المقبول من وزارة الشؤون الاجتماعية والعمل، ولا يجوز لأمين الصندوق الاحتفاظ بأكثر من (50000) ل.س للنفقات النثرية[cite: 5].</p>
-
-                <h3>الفصل السادس والسابع: فروع الجمعية وحلها</h3>
-                <p><b>مادة 47 إلى 56:</b> يحق للجمعية إنشاء فروع بعد موافقة الوزارة والهيئة العامة[cite: 5]. وفي حال عجز الجمعية عن تحقيق أغراضها يتم حلها بقرار من الهيئة العامة بأغلبية ثلثي الأعضاء[cite: 5]. ويختتم النظام بجدول أسماء الأعضاء المؤسسين وبياناتهم الكاملة وتواقيعهم المعتمدة[cite: 5].</p>
-
+            <div class="card objective-card">
+                <div class="icon">🌱</div>
+                <h3>الاستدامة البيئية</h3>
+                <p>حماية المساحات الخضراء، تشجيع استخدام الطاقة البديلة، وتحسين جودة الحياة للأسر.</p>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- استمارة الانتساب -->
+    <section id="membership" class="container section-padding">
+        <div class="section-title">
+            <h2>استمارة طلب انتساب</h2>
+            <p>يرجى تعبئة البيانات التالية بدقة، وسيتم مراجعة طلبكم من قبل مجلس الإدارة.</p>
+        </div>
+
+        <div class="card form-card">
+            <form id="membershipForm">
+                <!-- المعلومات الشخصية -->
+                <h3 class="form-section-title">📋 المعلومات الشخصية</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>الاسم والكنية *</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>اسم الأب *</label>
+                        <input type="text" id="fatherName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>اسم الأم وشهرتها *</label>
+                        <input type="text" id="motherName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>مكان وتاريخ الميلاد *</label>
+                        <input type="text" id="birthPlaceDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>الرقم الوطني (11 رقماً) *</label>
+                        <input type="text" id="nationalId" maxlength="11" required>
+                    </div>
+                    <div class="form-group">
+                        <label>المؤهل العلمي *</label>
+                        <input type="text" id="education" required>
+                    </div>
+                    <div class="form-group">
+                        <label>المهنة / التخصص *</label>
+                        <input type="text" id="job" required>
+                    </div>
+                    <div class="form-group">
+                        <label>رقم الواتساب *</label>
+                        <input type="text" id="whatsapp" maxlength="10" placeholder="09xxxxxxxx" required>
+                    </div>
+                </div>
+
+                <!-- الخبرات -->
+                <h3 class="form-section-title" style="margin-top:25px;">💼 الخبرات العملية</h3>
+                <div class="form-group">
+                    <label>الخبرة العملية في مجال التدريس أو التدريب *</label>
+                    <textarea id="experience" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>الشهادات الحاصل عليها *</label>
+                    <textarea id="certificates" rows="3" required></textarea>
+                </div>
+
+                <!-- التعهد -->
+                <h3 class="form-section-title" style="margin-top:25px;">✍️ التعهد</h3>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="pledge" required>
+                    <label for="pledge">أتعهد بموجب هذا الموقع أدناه، وبعد اطلاعي على النظام الأساسي لجمعية "حنطة" وأهدافها، وباللوائح والقوانين والأنظمة النافذة في الجمهورية العربية السورية، أن ألتزم بجميع القرارات الصادرة عن مجلس الإدارة، وأن أدفع رسوم الانتساب (250 ل.س) والاشتراك السنوي (600 ل.س)، وأقر بأنني لا أصرّف أي تصرف يتعارض مع مصلحة الجمعية.</label>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width:100%; margin-top:20px;">إرسال طلب الانتساب</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>© 2026 جمعية حنطة الخيرية التنموية - طرطوس. جميع الحقوق محفوظة.</p>
+            <p>للاستفسار: heintah9@gmail.com</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
