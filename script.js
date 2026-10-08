@@ -103,8 +103,7 @@ ${formData.certificates}
         },
         body: JSON.stringify({
             title: issueTitle,
-            body: issueBody,
-            labels: ["pending", "membership-request"]
+            body: issueBody
         })
     })
     .then(response => {
